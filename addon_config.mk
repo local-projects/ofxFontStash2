@@ -33,7 +33,7 @@ common:
 	
 	# any special flag that should be passed to the compiler when using this
 	# addon 
-	  ADDON_CFLAGS = -DNANOVG_GL2_IMPLEMENTATION
+	ADDON_CFLAGS = -DNANOVG_GL3_IMPLEMENTATION
 	
 	# any special flag that should be passed to the linker when using this
 	# addon, also used for system libraries with -lname
@@ -59,5 +59,4 @@ common:
 	# when parsing the file system looking for libraries exclude this for all or
 	# a specific platform
 	# ADDON_LIBS_EXCLUDE =
-	
-	ADDON_DEFINES = USE_OFX_FONTSTASH2 NANOVG_GL2_IMPLEMENTATION
+	ADDON_DEFINES = USE_OFX_FONTSTASH2 NANOVG_GL3_IMPLEMENTATION
