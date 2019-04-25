@@ -809,9 +809,18 @@ void Fonts::applyOFMatrix(){ //from ofxNanoVG
     glm::mat4 modelViewMatrix = ofGetCurrentMatrix(OF_MATRIX_MODELVIEW);
     glm::vec2 viewSize(ofGetViewportWidth(), ofGetViewportHeight());
     
-    glm::vec2 translate = glm::vec2(modelViewMatrix[3][0], modelViewMatrix[3][1]) + viewSize/2;
+    //glm::vec2 translate = glm::vec2(modelViewMatrix[3][0], modelViewMatrix[3][1]) + viewSize/2;
     glm::vec2 scale(modelViewMatrix[0][0], modelViewMatrix[1][1]);
     glm::vec2 skew(modelViewMatrix[0][1], modelViewMatrix[1][0]);
+    
+    // off-axis translation needs projection matrix too
+    glm::mat4 projectionMatrix = ofGetCurrentMatrix(OF_MATRIX_PROJECTION);
+    glm::vec4 ndc = projectionMatrix * modelViewMatrix * glm::vec4(0.f, 0.f, 0.f, 1.f);
+    ndc = ndc / ndc.w;
+
+    glm::vec2 translate;
+    translate.x = .5f * (ndc.x + 1.0f) * ofGetViewportWidth();
+    translate.y = .5f * (ndc.y + 1.0f) * ofGetViewportHeight();
 
 	// handle OF style vFlipped inside FBO
 	#if OF_VERSION_MINOR <= 9
