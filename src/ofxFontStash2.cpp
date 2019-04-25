@@ -806,12 +806,12 @@ void Fonts::parseStyledText(const string & styledText, vector<StyledText> & outp
 void Fonts::applyOFMatrix(){ //from ofxNanoVG
 
 	OFX_FONSTASH2_CHECK
-	ofMatrix4x4 ofMatrix = ofGetCurrentMatrix(OF_MATRIX_MODELVIEW);
-	ofVec2f viewSize = ofVec2f(ofGetViewportWidth(), ofGetViewportHeight());
-
-	ofVec2f translate = ofVec2f(ofMatrix(3, 0), ofMatrix(3, 1)) + viewSize/2;
-	ofVec2f scale(ofMatrix(0, 0), ofMatrix(1, 1));
-	ofVec2f skew(ofMatrix(0, 1), ofMatrix(1, 0));
+    glm::mat4 modelViewMatrix = ofGetCurrentMatrix(OF_MATRIX_MODELVIEW);
+    glm::vec2 viewSize(ofGetViewportWidth(), ofGetViewportHeight());
+    
+    glm::vec2 translate = glm::vec2(modelViewMatrix[3][0], modelViewMatrix[3][1]) + viewSize/2;
+    glm::vec2 scale(modelViewMatrix[0][0], modelViewMatrix[1][1]);
+    glm::vec2 skew(modelViewMatrix[0][1], modelViewMatrix[1][0]);
 
 	// handle OF style vFlipped inside FBO
 	#if OF_VERSION_MINOR <= 9
