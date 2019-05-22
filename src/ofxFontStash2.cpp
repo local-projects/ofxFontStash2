@@ -823,15 +823,17 @@ void Fonts::applyOFMatrix(){ //from ofxNanoVG
     translate.y = .5f * (ndc.y + 1.0f) * ofGetViewportHeight();
 
 	// handle OF style vFlipped inside FBO
+    scale.y *= -1;
+    translate.y = (ofGetViewportHeight() - translate.y);
+    
 	#if OF_VERSION_MINOR <= 9
 	if (ofGetCurrentRenderer()->getCurrentOrientationMatrix()._mat[1][1] == 1) {
 	#else
 	if (ofGetCurrentRenderer()->getCurrentOrientationMatrix()[1][1] == 1) {
 	#endif
-		translate.y = (ofGetViewportHeight() - translate.y);
 		scale.y *= -1;
-		skew.y *= -1;
-	}
+    }
+    
 	ofxfs2_nvgResetTransform(ctx);
 	ofxfs2_nvgTransform(ctx, scale.x, -skew.y, -skew.x, scale.y, translate.x, translate.y);
 }
