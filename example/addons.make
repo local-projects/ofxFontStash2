@@ -1,6 +1,6 @@
-ofxRemoteUI
 ofxOsc
-ofxXmlSettings
 ofxPoco
-ofxTimeMeasurements
-ofxFontStash2
+ofxXmlSettings
+../../../ExternalAddons/ofxRemoteUI
+../../../ExternalAddons/ofxTimeMeasurements
+../../../ExternalAddons/ofxFontStash2

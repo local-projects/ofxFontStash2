@@ -18,10 +18,10 @@ void ofApp::setup(){
 	bool debugNanoVG = true;
 	fonts.setup(debugNanoVG);
 
-	fonts.addFont("Arial", "fonts/Arial Unicode.ttf");
-	fonts.addFont("veraMono", "fonts/VeraMono.ttf");
-	fonts.addFont("veraMonoBold", "fonts/VeraMono-Bold.ttf");
-	fonts.addFont("Helvetica", "fonts/HelveticaNeue.ttf");
+	fonts.addFont("Arial", "fonts/Arial.ttf");
+	fonts.addFont("veraMono", "fonts/Times New Roman.ttf");
+	fonts.addFont("veraMonoBold", "fonts/Times New Roman Bold.ttf");
+	fonts.addFont("Helvetica", "fonts/Helvetica.ttf");
 
 	ofxFontStash2::Style style;
 	style.fontID = "Arial";
